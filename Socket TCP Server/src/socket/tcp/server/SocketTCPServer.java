@@ -34,12 +34,14 @@ public class SocketTCPServer extends Thread {
     public static void main(String[] args) {
 
         try {
+            //Reconoce la Direccion IP del HOST
             thisIp = InetAddress.getLocalHost().getHostAddress();
             JOptionPane.showMessageDialog(null, "Servidor Iniciado en " + thisIp + "\nEsperando conexión desde el Cliente");
         } catch (UnknownHostException ex) {
         }
-
+        //Ejecuta la Clase Frame
         f = new Frame();
+        //Conecta el servidor
         objServidor.Conectar();
         try {
             objServidor.RecibirDatos();
@@ -48,11 +50,12 @@ public class SocketTCPServer extends Thread {
     }
 
     void Conectar() {
+        //Reestablece el contador a 0
         ObjAdivinar.intentos = 0;
         try {
-
+            //Inicia el ServerSocket
             this.servidor = new ServerSocket(numeroPuerto);
-            //System.out.println("Esperando al cliente...");
+            //Espera la conexión del Cliente
             this.clienteConectado = servidor.accept();
             //System.out.println("Conexión establecida desde: " + clienteConectado.getInetAddress() + " por el puerto " + clienteConectado.getPort());
 
@@ -68,30 +71,29 @@ public class SocketTCPServer extends Thread {
   
     public void CerrarConexiones() {
         try {
-
-            //CERRAR STREAMS Y SOCKETS
             //flujoSalida.close();
             //flujoEntrada.close();
             //clienteConectado.close();
             servidor.close();
+            //Llama a la función Conexión para volver a quedar en espera
             Conectar();
         } catch (IOException ex) {
             //System.out.println("Error en Cerrar");
         }
     }
     
-    void Jugar() {
+    private void Jugar() { //Comunicación
         while (ObjAdivinar.intentos < 10) {
             //System.out.println("IP:" + clienteConectado.getInetAddress() + " Port: " + clienteConectado.getPort());
             RecibirDatos();
             ObjAdivinar.intentos++;
         }
+        //No encontró el número secreto
         EnviarDatos(ObjAdivinar.Marcador());
         CerrarConexiones();
-
     }
 
-    void EnviarDatos(String cadena) {
+    private void EnviarDatos(String cadena) {
         try {
             //Envía el mensaje al cliente a través del Socket
             this.flujoSalida = new DataOutputStream(clienteConectado.getOutputStream());
@@ -103,7 +105,7 @@ public class SocketTCPServer extends Thread {
 
     }
 
-    void RecibirDatos() {
+    private void RecibirDatos() {
         try {
             //Recibe los datos al Servidor por medio del Socket
             this.flujoEntrada = new DataInputStream(clienteConectado.getInputStream());
@@ -124,7 +126,7 @@ public class SocketTCPServer extends Thread {
         }
     }
 
-    void Validar(String Recibido) {
+    private void Validar(String Recibido) {
         if (ObjAdivinar.numeroGenerado == (Integer.parseInt(Recibido))) {
             EnviarDatos(ObjAdivinar.Marcador());
             ObjAdivinar.intentos = 0;

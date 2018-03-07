@@ -11,9 +11,7 @@ package socket.tcp.server;
 public class Adivinar {
 
     public int numeroGenerado = 0;
-    public int numeroPedido = 0;
     public int intentos = 0;
-    public static Adivinar ObjAdivinar = new Adivinar();
 
     public String GenerarNumero() {
         numeroGenerado = (int) (Math.random() * 99) + 1;
