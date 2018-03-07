@@ -65,7 +65,21 @@ public class SocketTCPServer extends Thread {
             //System.out.println("error en conectar");
         }
     }
+  
+    public void CerrarConexiones() {
+        try {
 
+            //CERRAR STREAMS Y SOCKETS
+            //flujoSalida.close();
+            //flujoEntrada.close();
+            //clienteConectado.close();
+            servidor.close();
+            Conectar();
+        } catch (IOException ex) {
+            //System.out.println("Error en Cerrar");
+        }
+    }
+    
     void Jugar() {
         while (ObjAdivinar.intentos < 10) {
             //System.out.println("IP:" + clienteConectado.getInetAddress() + " Port: " + clienteConectado.getPort());
@@ -77,15 +91,11 @@ public class SocketTCPServer extends Thread {
 
     }
 
-    void EnviarDatos(String cadena
-    ) {
+    void EnviarDatos(String cadena) {
         try {
-            //cadena = "IM SERVER";
-            //CREO FLUJO DE SALIDA AL CLIENTE
+            //Envía el mensaje al cliente a través del Socket
             this.flujoSalida = new DataOutputStream(clienteConectado.getOutputStream());
-            //ENVIO UN MENSAJE AL CLIENTE
             this.flujoSalida.writeUTF(cadena);
-            //System.out.println("Enviando al cliente: " + cadena);
         } catch (IOException ex) {
             //Logger.getLogger(SocketTCPServer.class.getName()).log(Level.SEVERE, null, ex);
             //System.out.println("Error en Enviar Datos");
@@ -95,6 +105,7 @@ public class SocketTCPServer extends Thread {
 
     void RecibirDatos() {
         try {
+            //Recibe los datos al Servidor por medio del Socket
             this.flujoEntrada = new DataInputStream(clienteConectado.getInputStream());
             String recibido = flujoEntrada.readUTF();
             //System.out.println("Recibiendo del Cliente: \t" + recibido);
@@ -113,29 +124,13 @@ public class SocketTCPServer extends Thread {
         }
     }
 
-    void Validar(String Recibido
-    ) {
+    void Validar(String Recibido) {
         if (ObjAdivinar.numeroGenerado == (Integer.parseInt(Recibido))) {
             EnviarDatos(ObjAdivinar.Marcador());
             ObjAdivinar.intentos = 0;
             CerrarConexiones();
-
         } else {
             EnviarDatos(ObjAdivinar.UbicarNumero(Integer.parseInt(Recibido)));
-        }
-    }
-
-    public void CerrarConexiones() {
-        try {
-
-            //CERRAR STREAMS Y SOCKETS
-            //flujoSalida.close();
-            //flujoEntrada.close();
-            //clienteConectado.close();
-            servidor.close();
-            Conectar();
-        } catch (IOException ex) {
-            //System.out.println("Error en Cerrar");
         }
     }
 

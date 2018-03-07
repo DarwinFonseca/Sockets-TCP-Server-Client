@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package socket.tcp.server;
-
-import java.util.Scanner;
-
 /**
  *
  * @author DarwinFonck
@@ -17,7 +14,6 @@ public class Adivinar {
     public int numeroPedido = 0;
     public int intentos = 0;
     public static Adivinar ObjAdivinar = new Adivinar();
-    Scanner sc = new Scanner(System.in);
 
     public String GenerarNumero() {
         numeroGenerado = (int) (Math.random() * 99) + 1;
@@ -39,11 +35,6 @@ public class Adivinar {
             }
         }
         return Ubicacion;
-    }
-
-    public void PreguntarNumero() {
-        System.out.print("Digite su opción: ");
-        numeroPedido = sc.nextInt();
     }
 
     public String Marcador() {
