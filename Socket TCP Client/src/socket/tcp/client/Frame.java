@@ -226,7 +226,9 @@ public final class Frame extends javax.swing.JFrame implements Runnable {
             String Entrada = this.flujoEntrada.readUTF();
             LabelTexto.setText(Entrada);
             if (Entrada.startsWith("<HTML>")) {
+                jTextField.disable();
                 jTextField.setText("Terminó el Juego");
+                
                 btnEnviar.hide();
                 btnReiniciar.show();
 
@@ -242,7 +244,7 @@ public final class Frame extends javax.swing.JFrame implements Runnable {
 
     void EnviarDatos(String Cadena) {
         try {
-            //Envía los datos al Servidor por medio del Socket
+            //Recibe los datos al Servidor por medio del Socket
             this.flujoSalida = new DataOutputStream(Cliente.getOutputStream());
             this.flujoSalida.writeUTF(Cadena);
         } catch (IOException ex) {

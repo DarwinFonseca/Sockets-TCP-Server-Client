@@ -2,8 +2,6 @@ package socket.tcp.client;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Timer;
-
 /**
  *
  * @author DarwinFonck
@@ -11,14 +9,11 @@ import javax.swing.Timer;
 public class Clock extends Thread implements Runnable {
 
     private int Hora, Minutos, Segundos;
-    //public static Frame ObjFrameClock = new Frame();
-    //public SocketTCPServidor ObjTCP = new SocketTCPServidor();
 
     @Override
     public void run() {
         while (true) {
             try {
-
                 ++Segundos;
                 if (Segundos == 60) {
                     Segundos = 0;
