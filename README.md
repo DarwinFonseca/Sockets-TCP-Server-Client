@@ -9,7 +9,7 @@ Interconectividad                     NRC: 7996
 
 Link Directo Para ver el código del Cliente:
 https://github.com/DarwinFonseca/Sockets-TCP-Server-Client/tree/master/Socket%20TCP%20Client/src/socket/tcp/client
-<br>
+<br><br>
 Exportado .Jar
 https://github.com/DarwinFonseca/Sockets-TCP-Server-Client/tree/master/Socket%20TCP%20Client/dist
 
@@ -17,7 +17,7 @@ https://github.com/DarwinFonseca/Sockets-TCP-Server-Client/tree/master/Socket%20
 
 Link Directo Para ver el código del Servidor:
 https://github.com/DarwinFonseca/Sockets-TCP-Server-Client/tree/master/Socket%20TCP%20Server/src/socket/tcp/server
-<br>
+<br><br>
 Exportador .Jar
 https://github.com/DarwinFonseca/Sockets-TCP-Server-Client/tree/master/Socket%20TCP%20Server/dist
 <hr>
