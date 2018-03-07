@@ -22,7 +22,7 @@ public class SocketTCPClient {
         Obj.Preguntar();
     }
 
-    public void Preguntar() {
+    private void Preguntar() {
 
         JOptionPane.showMessageDialog(null, "Adivina el número");
         host = JOptionPane.showInputDialog(null,

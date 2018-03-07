@@ -164,7 +164,7 @@ public final class Frame extends javax.swing.JFrame implements Runnable {
     /*Darwin Gonzalo Fonseca Abril
      Modificación del Código
      */
-    void Conectar() {
+    private void Conectar() {
         btnReiniciar.hide();
         LabelTry.setText("" + intentos);
         try {
@@ -183,7 +183,7 @@ public final class Frame extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    public void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {
         if (evt.getSource() == btnReiniciar) {
             btnEnviar.show();
             btnReiniciar.hide();
@@ -194,7 +194,7 @@ public final class Frame extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    public void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {
         if (evt.getSource() == btnEnviar) {
             if (!jTextField.getText().isEmpty()) {
                 try {
@@ -218,7 +218,7 @@ public final class Frame extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    void RecibirDatos() {
+    private void RecibirDatos() {
         try {
             //Recibe los datos del Socket de parte del Servidor
             this.flujoEntrada = new DataInputStream(Cliente.getInputStream());
@@ -242,7 +242,7 @@ public final class Frame extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    void EnviarDatos(String Cadena) {
+    private void EnviarDatos(String Cadena) {
         try {
             //Recibe los datos al Servidor por medio del Socket
             this.flujoSalida = new DataOutputStream(Cliente.getOutputStream());
@@ -253,7 +253,7 @@ public final class Frame extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    void CerrarConexiones() {
+    private void CerrarConexiones() {
         try {
             //Cierra Puertas de enlace y el Socket
             this.flujoEntrada.close();
