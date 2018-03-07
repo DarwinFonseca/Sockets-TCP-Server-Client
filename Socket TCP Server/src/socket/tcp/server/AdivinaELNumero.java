@@ -8,7 +8,7 @@ package socket.tcp.server;
  *
  * @author DarwinFonck
  */
-public class Adivinar {
+public class AdivinaELNumero {
 
     public int numeroGenerado = 0;
     public int intentos = 0;

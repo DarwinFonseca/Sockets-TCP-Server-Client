@@ -28,7 +28,7 @@ public class SocketTCPServer extends Thread {
     private static Frame f;
 
     private static SocketTCPServer objServidor = new SocketTCPServer();
-    private Adivinar ObjAdivinar = new Adivinar();
+    private AdivinaELNumero ObjAdivinar = new AdivinaELNumero();
     static String thisIp = "";
 
     public static void main(String[] args) {
